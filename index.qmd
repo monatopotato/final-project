@@ -64,8 +64,6 @@ In this graph the dataset shows three missing values under number 1, indicating 
 
 ```{r}
 ggscatter(new_pkd, x = "player", y = "keeper_dir", 
-          add = "reg.line", conf.int = TRUE, 
-          cor.coef = TRUE, cor.method = "pearson",
           xlab = "Player", ylab = "Keeper Direction")
 ```
 
