@@ -1,0 +1,11 @@
+---
+title: "About"
+---
+
+Hello, I am Manato Ogawa and I am a student at the University of Wisconsin Madison studying computer science.
+
+email: manatoo57324@outlook.com
+
+[Github repo link](https://github.com/monatopotato/final-project)
+
+[Kane's Free Data Science Bootcamp](https://bootcamp.davidkane.info)

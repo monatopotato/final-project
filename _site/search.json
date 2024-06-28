@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Hello, I am Manato Ogawa and I am a student at the University of Wisconsin Madison studying computer science.\nemail: manatoo57324@outlook.com\nGithub repo link\nKane’s Free Data Science Bootcamp"
+  },
+  {
+    "objectID": "data.html",
+    "href": "data.html",
+    "title": "Visualizing the data",
+    "section": "",
+    "text": "Here we will be able to see the dataset."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "EPL Penalty Kicks",
+    "section": "",
+    "text": "Predicting if a player will score a penalty kick is a difficult question to answer. The following 106 observations describe all of the penalty kicks taken from the 2016/2017 premier league season. There are 13 variables describing every penalty kick, but we will use four variables (kick direction, keeper direction, the foot a player used to kick the ball, and whether the kick resulted in a goal) for this analysis. Although there isn’t much of a correlation between the foot a player uses to kick a penalty and whether they scored, a trend describes how most penalty kicks result in a goal.\nThis first graph represents a"
+  },
+  {
+    "objectID": "data.html#unedited-dataset",
+    "href": "data.html#unedited-dataset",
+    "title": "Visualizing the data",
+    "section": "Unedited Dataset",
+    "text": "Unedited Dataset\nHere is the unedited dataset that contains 13 variables.\n\n\n'data.frame':   106 obs. of  13 variables:\n $ No.                    : int  1 2 3 4 5 6 7 8 9 10 ...\n $ Match.Week             : int  1 1 1 1 2 2 2 3 3 3 ...\n $ Date                   : chr  \"13-Aug-16\" \"13-Aug-16\" \"14-Aug-16\" \"15-Aug-16\" ...\n $ Player                 : chr  \"Riyad Mahrez\" \"Sergio Ag\\xfcero\" \"Theo Walcott\" \"Eden Hazard\" ...\n $ Team                   : chr  \"Leicester\" \"Man City\" \"Arsenal\" \"Chelsea\" ...\n $ Match                  : chr  \"Hull vs\\xa0Leicester\" \"Man City\\xa0vs Sunderland\" \"Arsenal\\xa0vs Liverpool\" \"Chelsea\\xa0vs West Ham\" ...\n $ Time.of.Penalty.Awarded: chr  \"47' minute\" \"4' minute\" \"30' minute\" \"47' minute\" ...\n $ Scored                 : chr  \"Scored\" \"Scored\" \"Missed\" \"Scored\" ...\n $ Final.Results          : chr  \"42737\" \"42737\" \"42828\" \"42737\" ...\n $ Foot                   : chr  \"L\" \"R\" \"R\" \"R\" ...\n $ Kick_Direction         : chr  \"C\" \"L\" \"L\" \"C\" ...\n $ Keeper_Direction       : chr  \"R\" \"L\" \"L\" \"L\" ...\n $ Saved                  : int  NA NA 1 NA NA NA NA NA NA NA ..."
+  },
+  {
+    "objectID": "data.html#edited-dataset",
+    "href": "data.html#edited-dataset",
+    "title": "Visualizing the data",
+    "section": "Edited Dataset",
+    "text": "Edited Dataset\nI used the select method to select the most important variables (scored, foot, kick_dir, keeper_dir). Each of the variables except “saved”, I converted the characters into number data. For player, each unique penalty kicker was assigned a number (there was 48 unique kickers). For scored, 1 represented “scored” and 0 represented “missed”. For foot, 2 represents “L” and 3 represents “R”. 1 represents and empty character which I’ll explain later. For kick_dir, 2 represents “C” or center, 3 represents “L” and 4 represents “R”. 1 represents and empty character which I’ll explain later. For keeper_dir, 2 represents “C” or center, 3 represents “L” and 4 represents “R”. 1 represents and empty character which I’ll explain later.\n\n\n'data.frame':   106 obs. of  5 variables:\n $ player    : int  1 2 3 4 5 2 6 7 8 9 ...\n $ scored    : num  1 1 0 1 1 1 1 1 1 0 ...\n $ foot      : num  2 3 3 3 3 3 3 3 3 3 ...\n $ kick_dir  : num  2 3 3 2 3 3 2 4 2 4 ...\n $ keeper_dir: num  4 3 3 3 4 4 3 3 4 4 ..."
+  }
+]

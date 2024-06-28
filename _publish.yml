@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: eed5ef5d-8c02-4d23-b5bf-e3358ed6064b
+      url: 'https://monatopotato.quarto.pub/final-project'

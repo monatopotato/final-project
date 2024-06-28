@@ -1,0 +1,67 @@
+---
+title: "Visualizing the data"
+---
+
+Here we will be able to see the dataset.
+
+```{r}
+#| echo: false
+#| messages: false
+#| warning: false
+
+library(knitr)
+library(kableExtra)
+library(ggplot2)
+library(dplyr)
+library(gridExtra)
+library(tidyverse)
+```
+
+## Unedited Dataset
+
+Here is the unedited dataset that contains 13 variables.
+
+```{r}
+#| echo: false
+#| messages: false
+
+pkd <- read.csv('../final-project/penalty_data.csv')
+str(pkd)
+
+```
+
+## Edited Dataset
+
+I used the select method to select the most important variables (scored, foot, kick_dir, keeper_dir). Each of the variables except "saved", I converted the characters into number data. \n For player, each unique penalty kicker was assigned a number (there was 48 unique kickers). \n For scored, 1 represented "scored" and 0 represented "missed". \n For foot, 2 represents "L" and 3 represents "R". 1 represents and empty character which I'll explain later. \n For kick_dir, 2 represents "C" or center, 3 represents "L" and 4 represents "R". 1 represents and empty character which I'll explain later. \n For keeper_dir, 2 represents "C" or center, 3 represents "L" and 4 represents "R". 1 represents and empty character which I'll explain later.
+
+```{r}
+#| echo: false
+#| messages: false
+
+new_pkd <- pkd %>%
+  select(player = Player, scored = Scored, foot = Foot, kick_dir = Kick_Direction, keeper_dir = Keeper_Direction) %>%
+  mutate(scored = ifelse(scored == "Scored", 1, 0),  
+         foot = case_when(
+           foot == "" ~ 1,
+           foot == "L" ~ 2,
+           foot == "R" ~ 3
+         ),
+         kick_dir = case_when(
+           kick_dir == "" ~ 1,
+           kick_dir == "C" ~ 2,
+           kick_dir == "L" ~ 3,
+           kick_dir == "R" ~ 4
+         ),
+         keeper_dir = case_when(
+           keeper_dir == "" ~ 1,
+           keeper_dir == "C" ~ 2,
+           keeper_dir == "L" ~ 3,
+           keeper_dir == "R" ~ 4
+         ),
+         player = as.integer(factor(player, levels = unique(player)))
+  )
+
+str(new_pkd)
+
+```
+

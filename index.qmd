@@ -1,0 +1,88 @@
+---
+title: "EPL Penalty Kicks"
+execute:
+  messages: false
+  warning: false
+  echo: false
+---
+
+Predicting if a player will score a penalty kick is a difficult question to answer. The following 106 observations describe all of the penalty kicks taken from the 2016/2017 premier league season. There are 13 variables describing every penalty kick, but we will use four variables (kick direction, keeper direction, the foot a player used to kick the ball, and whether the kick resulted in a goal) for this analysis. Although there isn't much of a correlation between the foot a player uses to kick a penalty and whether they scored, a trend describes how most penalty kicks result in a goal.
+
+```{r}
+library(knitr)
+library(kableExtra)
+library(ggplot2)
+library(dplyr)
+library(gridExtra)
+library(tidyverse)
+library(ggpubr)
+```
+
+```{r}
+#| echo: false
+#| messages: false
+
+pkd <- read.csv('../final-project/penalty_data.csv')
+
+new_pkd <- pkd %>%
+  select(player = Player, scored = Scored, foot = Foot, kick_dir = Kick_Direction, keeper_dir = Keeper_Direction, saved = Saved, date = Date) %>%
+  mutate(scored = ifelse(scored == "Scored", 1, 0),  
+         foot = case_when(
+           foot == "" ~ 1,
+           foot == "L" ~ 2,
+           foot == "R" ~ 3
+         ),
+         kick_dir = case_when(
+           kick_dir == "" ~ 1,
+           kick_dir == "C" ~ 2,
+           kick_dir == "L" ~ 3,
+           kick_dir == "R" ~ 4
+         ),
+         keeper_dir = case_when(
+           keeper_dir == "" ~ 1,
+           keeper_dir == "C" ~ 2,
+           keeper_dir == "L" ~ 3,
+           keeper_dir == "R" ~ 4
+         ),
+         player = as.integer(factor(player, levels = unique(player))), 
+         date = as.integer(factor(date, levels = unique(date)))
+  )
+```
+
+In this first graph, we notice some missing data in the 'Foot' variable, leading to wider shading around the regression. The dot at 2.0 signifies left-footed kicks, while 3.0 indicates right-footed kicks. Moving to the y-axis, 'Kick Result' (1.00 for 'Missed' and 2.00 for 'Scored') reflects the outcome of the 'Scored' variable. Despite more right-footed penalty takers in the dataset, this did not significantly influence the outcome of penalty kicks. Overall, there is a positive correlation, suggesting that most kickers successfully score from penalties. 
+
+```{r}
+
+library("ggpubr")
+ggscatter(new_pkd, x = "foot", y = "scored", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Foot", ylab = "Scored")
+```
+
+In this graph the dataset shows three missing values under number 1, indicating instances where information on the goalkeeper's direction during penalty kicks is absent. Number 2 ('C') signifies instances where the goalkeeper moved towards the center, while 3 ('L') and 4 ('R') represent left and right directions respectively. The correlation between player behavior and goalkeeper direction is weak, at 0.15. Despite goalkeepers studying players' penalty kick tendencies, players may adjust their strategy to outsmart goalkeepers. Overall, while kickers typically have an advantage knowing where to aim, it's notable that this correlation isn't the weakest in the dataset.
+
+```{r}
+ggscatter(new_pkd, x = "player", y = "keeper_dir", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Player", ylab = "Keeper Direction")
+```
+
+
+This chart indicates, there is a moderately weak correlation between the player’s foot and the kick direction. This suggests that there is little relevance between which foot the player uses and what direction the ball will travel.
+
+```{r}
+ggscatter(new_pkd, x = "foot", y = "kick_dir", 
+          add = "reg.line", conf.int = TRUE, 
+          cor.coef = TRUE, cor.method = "pearson",
+          xlab = "Foot", ylab = "Kick_Direction")
+```
+
+Here is a graph that represents the date and whether the player scored. Here I tried to see if there is a correlation between temperature and whther a player scored.
+
+```{r}
+ggscatter(new_pkd, x = "date", y = "scored", 
+          xlab = "date", ylab = "scored")
+```
+
