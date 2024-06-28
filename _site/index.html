@@ -137,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Predicting if a player will score a penalty kick is a difficult question to answer. The following 106 observations describe all of the penalty kicks taken from the 2016/2017 premier league season. There are 13 variables describing every penalty kick, but we will use four variables (kick direction, keeper direction, the foot a player used to kick the ball, and whether the kick resulted in a goal) for this analysis. Although there isn’t much of a correlation between the foot a player uses to kick a penalty and whether they scored, a trend describes how most penalty kicks result in a goal.</p>
-<p>This first graph represents a</p>
+<p>In this first graph, we notice some missing data in the ‘Foot’ variable, leading to wider shading around the regression. The dot at 2.0 signifies left-footed kicks, while 3.0 indicates right-footed kicks. Moving to the y-axis, ‘Kick Result’ (0.00 for ‘Missed’ and 1.00 for ‘Scored’) reflects the outcome of the ‘Scored’ variable. Despite more right-footed penalty takers in the dataset, this did not significantly influence the outcome of penalty kicks. Overall, there is a positive correlation, suggesting that most kickers successfully score from penalties.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -147,6 +147,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>In this graph the dataset shows three missing values under number 1, indicating instances where information on the goalkeeper’s direction during penalty kicks is absent. Number 2 (‘C’) signifies instances where the goalkeeper moved towards the center, while 3 (‘L’) and 4 (‘R’) represent left and right directions respectively. The correlation between player behavior and goalkeeper direction is weak, at 0.15. Despite goalkeepers studying players’ penalty kick tendencies, players may adjust their strategy to outsmart goalkeepers. Overall, while kickers typically have an advantage knowing where to aim, it’s notable that this correlation isn’t the weakest in the dataset.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -156,6 +157,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>This chart indicates, there is a moderately weak correlation between the player’s foot and the kick direction. This suggests that there is little relevance between which foot the player uses and what direction the ball will travel.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -165,20 +167,12 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<p>Here is a graph that represents the date and whether the player scored. Here I tried to see if there is a correlation between temperature and whther a player scored.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

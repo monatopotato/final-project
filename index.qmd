@@ -49,7 +49,7 @@ new_pkd <- pkd %>%
   )
 ```
 
-In this first graph, we notice some missing data in the 'Foot' variable, leading to wider shading around the regression. The dot at 2.0 signifies left-footed kicks, while 3.0 indicates right-footed kicks. Moving to the y-axis, 'Kick Result' (1.00 for 'Missed' and 2.00 for 'Scored') reflects the outcome of the 'Scored' variable. Despite more right-footed penalty takers in the dataset, this did not significantly influence the outcome of penalty kicks. Overall, there is a positive correlation, suggesting that most kickers successfully score from penalties. 
+In this first graph, we notice some missing data in the 'Foot' variable, leading to wider shading around the regression. The dot at 2.0 signifies left-footed kicks, while 3.0 indicates right-footed kicks. Moving to the y-axis, 'Kick Result' (0.00 for 'Missed' and 1.00 for 'Scored') reflects the outcome of the 'Scored' variable. Despite more right-footed penalty takers in the dataset, this did not significantly influence the outcome of penalty kicks. Overall, there is a positive correlation, suggesting that most kickers successfully score from penalties. 
 
 ```{r}
 
